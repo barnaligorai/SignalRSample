@@ -15,16 +15,16 @@ connectionUserCount.on("updatedTotalUsers", value => {
 });
 
 // invoke hub methods aka send notification to hub
-newWindowLoadedOnClient = () => {
+var newWindowLoadedOnClient = () => {
     connectionUserCount.send("NewWindowLoaded");
 };
 
 // start connection
-fulfilled = () => {
-    console.log("Connection established successfully");
+var fulfilled = () => {
+    console.log("Connection established for userCount successfully");
     newWindowLoadedOnClient();
 };
 
-rejected = () => console.log("Connection rejected");
+var rejected = () => console.log("Connection rejected");
 
 connectionUserCount.start().then(fulfilled, rejected);
